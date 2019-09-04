@@ -15,23 +15,31 @@
 unsigned long num = 0;
 
 int *num_array(void){
-    DATA_TYPE *arr, c, buff_num=0;
+    DATA_TYPE *arr, buff_num=0;
+    char c = 0;
+    _Bool nextflag = 0;
     arr = calloc(num+1, sizeof(DATA_TYPE));
     
-    while((c=getchar()) !='\n'){
+    while(c != '\n'){
+        c=getchar();
         if(c>='0' && c<='9'){
             c-=48;
             buff_num *= 10;
             buff_num += c;
-        } else if(c == ','){
+            nextflag = 0;
+        } else if((c == ',' || c == '\n' || c == ' ') && nextflag == 0){
             arr[num] = buff_num;
             num++;
+            buff_num = 0;
             arr = (DATA_TYPE*) realloc(arr, num+1);
+            nextflag = 1;
         } else {
 //            printf("\nDetect incorrect symbol, exiting...\n");
 //            exit(9);
+            nextflag = 0;
         }
     }
+    
 //    arr = (DATA_TYPE*) realloc(arr, num+1);
     arr[num+1]='\0';
     return arr;
@@ -45,7 +53,7 @@ int main() {
     arr = num_array();
     
     for(int i=0; i<num;i++){
-        
+        printf("%d; ", arr[i]);
     }
     
     return 0;
