@@ -4,4 +4,4 @@ compiler:
   - clang
   
 script: 
-  make test < testing.txt
+  make test > testing.txt
