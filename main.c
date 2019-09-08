@@ -120,7 +120,7 @@ DATA_TYPE_DEC *NumArray(void){
 
 int main(int argc, char *argv[]) {
     if(!strcmp(argv[1],"testing")){
-        printf("all fine)");
+        printf("all fine");
         exit(0);
     }
     printf("Enter numbers separated by commas... e.g.: 10,432,310729\n");
