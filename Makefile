@@ -12,7 +12,7 @@ all:
 		rm ./a.out;
 		clear;
 	else ifeq ($(CXX),g++)
-           	gcc main.c -lm;
+		gcc main.c -lm;
 		clear;
 		-./a.out;
 		rm ./a.out;
@@ -33,7 +33,7 @@ test:
 		rm ./a.out;
 		clear;
 	else ifeq ($(CXX),g++)
-           	gcc main.c -lm;
+		gcc main.c -lm;
 		clear;
 		-./a.out;
 		rm ./a.out;
