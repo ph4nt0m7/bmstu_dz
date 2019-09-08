@@ -5,4 +5,3 @@ compiler:
   
 script: 
   make test
-
