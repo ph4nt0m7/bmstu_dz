@@ -3,3 +3,6 @@ language: C
 compiler:
   - clang
   - gcc
+  
+script: 
+  - c main.c < testing.txt
