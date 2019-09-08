@@ -5,4 +5,4 @@ compiler:
   - gcc
   
 script: 
-  - c main.c < testing.txt
+  ./configure && make && make test < testing.txt
