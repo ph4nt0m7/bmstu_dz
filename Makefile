@@ -11,7 +11,6 @@ clean:
 test: 
 	clang main.c -lm;
 	clear;
-	-./a.out;
-	892498273 4987239847 92837498234
+	-./a.out testing;
 	rm ./a.out;
 	clear;
