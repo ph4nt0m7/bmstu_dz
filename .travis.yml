@@ -2,7 +2,6 @@ language: C
 
 compiler:
   - clang
-  - gcc
   
 script: 
   ./configure && make && make test < testing.txt
