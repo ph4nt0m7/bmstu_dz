@@ -136,7 +136,7 @@ int main(int argc, char *argv[]) {
         printf("all fine");
         exit(0);
     }
-    printf("Enter numbers separated by commas... e.g.: 10,432,310729\n");
+    printf("Enter numbers separated by commas, spaces, tabs or semicolon, ... e.g.: 10,432     10,432; 310729\n");
     DATA_TYPE_DEC *arr;
     
     arr = NumArray();
