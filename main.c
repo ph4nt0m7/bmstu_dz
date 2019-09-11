@@ -5,11 +5,6 @@
 //  Created by Konstantin Zhurov on 02/09/2019.
 //  Copyright © 2019 ph4nt0m7. All rights reserved.
 //
-//  TODO:
-//  DONE? 1) При запуске без аргументов происходит разыменование нулевого указателя
-//  DONE? 2) в NumArray есть выход за границы массива
-//  DONE: 3) Число «1» преобразуется неправильно
-//
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -72,11 +67,7 @@ DATA_TYPE_BIN *dec2bin (const DATA_TYPE_DEC num){
 
         temp_buff_bin[clock] = '0' + (buff_num%2);
         buff_num /= 2;
-        
         buff_bin = temp_buff_bin;
-        
-//        buff_bin = (DATA_TYPE_BIN*) realloc(buff_bin, clock+1);
-        
         clock++;
         buff_bin[clock] = 0;
     }
@@ -87,7 +78,6 @@ DATA_TYPE_BIN *dec2bin (const DATA_TYPE_DEC num){
         buff_bin[i] = buff_bin[clock-i-1];
         buff_bin[clock-i-1] = temp;
     }
-    
     
     buff_bin[clock]='\0';
     dec2bin_lastnum = clock;
@@ -110,14 +100,13 @@ DATA_TYPE_DEC *NumArray(void){
             buff_num += c;
             nextflag = 0;
             clock_max_value++;
-        } else if (c == ',' || c == '\n' || c == ' ') {
+        } else if (c == ',' || c == '\n' || c == ' ' || c == '\t' || c == ';') {
             if(nextflag == 0){
                 if(clock_max_value >= 20){
                     printf("%s %lu Number reach max value! Conversion will be wrong\n", WARNING, arr_size+START_LIST_FROM);
                     if(TURN_WRONG_NUMBER_INTO_ZERO)
                         buff_num = 0;
                 }
-
                 DATA_TYPE_DEC *temp_arr;
                 temp_arr = calloc(arr_size+1, sizeof(DATA_TYPE_DEC));
                 for(int cl = 0; cl < arr_size; cl++){
@@ -130,8 +119,6 @@ DATA_TYPE_DEC *NumArray(void){
                 buff_num = 0;
                 nextflag = 1;
                 clock_max_value = 0;
-                
-//                free(temp_arr);
             }
         } else if (END_PROG_WHEN_INCOR_SMBL){
             printf("\nDetect incorrect symbol, exiting...\n");
@@ -140,17 +127,7 @@ DATA_TYPE_DEC *NumArray(void){
             nextflag = 0;
         }
     }
-    
-    //    arr = (DATA_TYPE_DEC*) realloc(arr, num+1);
     arr[arr_size+1]='\0';
-    
-//    printf("debug\n");
-//    for(int i=0; i<arr_size; i++) {
-//        printf("%d,",arr[i]);
-//    }
-//    printf("\ndebug\n");
-
-    
     return arr;
 }
 
@@ -164,8 +141,6 @@ int main(int argc, char *argv[]) {
     
     arr = NumArray();
     DATA_TYPE_BIN *arr2[arr_size+1], *arr2_temp;
-
-//    arr2 = calloc(arr_size+1, sizeof(DATA_TYPE_BIN));
     
     for(int i=0; i<arr_size;i++){
         arr2_temp = dec2bin(arr[i]);
@@ -173,17 +148,8 @@ int main(int argc, char *argv[]) {
         for(int j=0; j<dec2bin_lastnum; j++){
             arr2[i][j] = arr2_temp[j];
         }
-//        printf("%d -> %s\n",arr[i],arr2[i]);
     }
-//    for(int i=0; i< arr_size; i++){
-//        printf("%d -> %s\n",arr[i],arr2[i]);
-//    }
-    
     arr2[arr_size] = NULL;
-//    for(int i=0; i<arr_size; i++ ){
-//        printf("%d: %s\n",i+1,arr2[i]);
-//
-//    }
     PrintArr2Sets(arr2, '\n','\0');
     
     return 0;
