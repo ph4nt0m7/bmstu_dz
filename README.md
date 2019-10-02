@@ -60,4 +60,4 @@
 P.s.
 ------------
 Если есть баги, не робит прога или еще какая то фигня, то знайте, я тут один и принцеп только такой:
-![alt text](url:"https://sun1-18.userapi.com/c853520/v853520134/fb9ff/LTmnRW2cOoU.jpg")
+![Screenshot](url:"https://sun1-18.userapi.com/c853520/v853520134/fb9ff/LTmnRW2cOoU.jpg")
