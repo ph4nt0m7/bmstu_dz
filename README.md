@@ -269,4 +269,3 @@ void add_log(char activity[], char params[]);
     * 3: memory
     * 4: variable
     * 9: unknown
-
